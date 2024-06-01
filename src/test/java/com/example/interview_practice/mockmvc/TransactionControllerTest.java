@@ -1,7 +1,6 @@
 package com.example.interview_practice.mockmvc;
 
 import com.example.interview_practice.MyUtils;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -43,7 +42,7 @@ class TransactionControllerTest {
                 .andExpect(jsonPath("$.amount", is(25.1)))
                 // it prints all request and response details (body, headers, method, etc)
                 .andDo(print());
-        // todo push codes to Github
+        // todo mock service here
         // Todo make user entity
         // Todo Test user DB layer
         // todo check what's etag and location in ResponseEntity

@@ -1,15 +1,13 @@
 package com.example.interview_practice.mockmvc.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "transactions")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -20,6 +18,11 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private BigDecimal amount;
-    private String sender;
-    private String rec;
+    @ManyToOne()
+    @JoinColumn(name = "sender_id")
+    private User sender;
+    @ManyToOne
+    @JoinColumn(name = "rec_id")
+    private User rec;
+    private String version;
 }
