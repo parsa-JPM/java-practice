@@ -28,7 +28,17 @@ public class User {
      More, the FetchType.EAGER strategy is also prone to N+1 query issues if you forget to
      specify that an EAGER association needs to be JOIN FETCH-ed by a JPQL query,
      Hibernate is going to issue a secondary select for every uninitialized association
-     todo ask chat gpt to explain n+1 query problem
+     First Query (1 Query):
+        sql
+        SELECT * FROM users;
+
+        N Queries:
+        For each user loaded in the first query, additional queries are executed to load the sendTransactions and recTransactions because of FetchType.EAGER.
+        sql
+        SELECT * FROM transactions WHERE sender_id = ?;
+        SELECT * FROM transactions WHERE rec_id = ?;
+        If there are 10 users, this results in 1 query to fetch users and 20 queries to fetch transactions (10 for sendTransactions and 10 for recTransactions),
+        resulting in 21 queries in total.
     */
     @OneToMany(mappedBy = "sender", fetch = FetchType.LAZY)
     private Set<Transaction> sendTransactions;
