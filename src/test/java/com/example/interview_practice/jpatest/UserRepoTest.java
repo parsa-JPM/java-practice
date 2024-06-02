@@ -4,30 +4,19 @@ import com.example.interview_practice.mockmvc.model.Transaction;
 import com.example.interview_practice.mockmvc.model.TrxRepo;
 import com.example.interview_practice.mockmvc.model.User;
 import com.example.interview_practice.mockmvc.model.UserRepo;
-import jakarta.persistence.EntityManager;
-import jakarta.transaction.Transactional;
-import lombok.extern.java.Log;
 import lombok.extern.jbosslog.JBossLog;
-import lombok.extern.log4j.Log4j;
-import lombok.extern.log4j.Log4j2;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureTestEntityManager;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.support.TransactionTemplate;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
   the scope of @DataJpaTest is limited to the JPA repository layer of the application.

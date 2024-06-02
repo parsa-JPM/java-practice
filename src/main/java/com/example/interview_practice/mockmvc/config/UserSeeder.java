@@ -5,7 +5,6 @@ import com.example.interview_practice.mockmvc.model.Transaction;
 import com.example.interview_practice.mockmvc.model.TrxRepo;
 import com.example.interview_practice.mockmvc.model.User;
 import com.example.interview_practice.mockmvc.model.UserRepo;
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
