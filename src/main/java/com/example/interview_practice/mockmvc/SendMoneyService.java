@@ -19,7 +19,7 @@ public class SendMoneyService {
 
         Transaction trx = Transaction.builder()
                 .sender(userRepo.findByName(trxReq.sender()))
-                .rec(userRepo.findByName(trxReq.rec()))
+//                .rec(userRepo.findByName(trxReq.rec()))
                 .amount(trxReq.amount())
                 .version("1")
                 .build();

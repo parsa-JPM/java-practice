@@ -18,7 +18,8 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private BigDecimal amount;
-    @ManyToOne()
+    @ManyToOne
+    //this annotation allows you to specify the Foreign Key column name
     @JoinColumn(name = "sender_id")
     private User sender;
     @ManyToOne
