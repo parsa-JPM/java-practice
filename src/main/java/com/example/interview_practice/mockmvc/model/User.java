@@ -13,6 +13,7 @@ import java.util.Set;
 @Table(name = "users")
 @NoArgsConstructor
 @AllArgsConstructor
+// keep in mind Data is not good idea for entity because it uses all fields to generate equals and hashCode and would be inefficient
 @Data
 @Builder
 public class User {

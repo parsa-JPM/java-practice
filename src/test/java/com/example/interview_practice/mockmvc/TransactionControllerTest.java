@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-// it's needed to use mockmvc object
+// it tells spring to create mockMvc object for us
 @AutoConfigureMockMvc
 class TransactionControllerTest {
 
@@ -43,8 +43,7 @@ class TransactionControllerTest {
                 // it prints all request and response details (body, headers, method, etc)
                 .andDo(print());
         // todo mock service here
-        // Todo make user entity
-        // Todo Test user DB layer
-        // todo check what's etag and location in ResponseEntity
+        // todo make other test like 404, 400
+        // todo complete service logic
     }
 }

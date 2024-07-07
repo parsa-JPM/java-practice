@@ -20,8 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
   the scope of @DataJpaTest is limited to the JPA repository layer of the application.
-   It doesn’t load the entire application context,
-  which can make testing faster and more focused.
+  It doesn’t load the entire application context, which can make testing faster and more focused.
   This annotation also provides a pre-configured EntityManager and TestEntityManager for testing JPA entities.
   it can be configurable:
   @DataJpaTest(properties = {
