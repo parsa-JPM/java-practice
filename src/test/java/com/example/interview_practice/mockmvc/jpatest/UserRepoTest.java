@@ -1,4 +1,4 @@
-package com.example.interview_practice.jpatest;
+package com.example.interview_practice.mockmvc.jpatest;
 
 import com.example.interview_practice.mockmvc.model.Transaction;
 import com.example.interview_practice.mockmvc.model.TrxRepo;

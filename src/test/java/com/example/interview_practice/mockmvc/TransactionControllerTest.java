@@ -42,8 +42,5 @@ class TransactionControllerTest {
                 .andExpect(jsonPath("$.amount", is(25.1)))
                 // it prints all request and response details (body, headers, method, etc)
                 .andDo(print());
-        // todo mock service here
-        // todo make other test like 404, 400
-        // todo complete service logic
     }
 }
