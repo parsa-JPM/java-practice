@@ -26,17 +26,41 @@ public class LongestUniqueConcatenated {
         String[] A3 = {"potato", "kayak", "banana", "racecar"};
         String[] A4 = {"eva", "jqw", "tyn", "jan"};
         String[] A5 = {"a", "b", "c"};
+        String[] A6 = {};
+        String[] A7 = {" "};
 
         assertEquals(5, solution(A1));
         assertEquals(6, solution(A2));
         assertEquals(0, solution(A3));
         assertEquals(9, solution(A4));
         assertEquals(3, solution(A5));
+        assertEquals(0, solution(A6));
+        assertEquals(1, solution(A7));
     }
 
 
+    @Test
+    void runSolution2() {
+        String[] A1 = {"co", "dil", "ity"};
+        String[] A2 = {"abc", "yyy", "def", "csv"};
+        String[] A3 = {"potato", "kayak", "banana", "racecar"};
+        String[] A4 = {"eva", "jqw", "tyn", "jan"};
+        String[] A5 = {"a", "b", "c"};
+        String[] A6 = {};
+        String[] A7 = {""};
+
+        assertEquals(5, solution2(A1));
+        assertEquals(6, solution2(A2));
+        assertEquals(0, solution2(A3));
+        assertEquals(9, solution2(A4));
+        assertEquals(3, solution2(A5));
+        assertEquals(0, solution2(A6));
+        assertEquals(0, solution2(A7));
+    }
+
     int solution(String[] A) {
         List<String> allPossibleStrs = findSubStrings(A, 0, "", new LinkedList<>());
+        System.out.println(allPossibleStrs);
         int maxLen = 0;
         for (String s : allPossibleStrs) {
             if (isUnique(s) && s.length() > maxLen) {
@@ -62,7 +86,7 @@ public class LongestUniqueConcatenated {
         return allFoundStrs;
     }
 
-    private boolean isUnique(String s) {
+     boolean isUnique(String s) {
         HashSet<Character> charSet = new HashSet<>();
         for (char c : s.toCharArray()) {
             if (charSet.contains(c)) {
@@ -71,5 +95,24 @@ public class LongestUniqueConcatenated {
             charSet.add(c);
         }
         return true;
+    }
+
+    int solution2(String[] A) {
+        return findMaxLenString(A, 0, "", 0);
+    }
+
+    int findMaxLenString(String[] strs, int i, String str, int maxLen) {
+        if (i == strs.length) {
+            if (isUnique(str) && str.length() > maxLen) {
+                // if we use mutable AtomicInteger to keep max len we don't need get and pass in recursion methods
+                maxLen = str.length();
+            }
+
+            return maxLen;
+        }
+
+        int maxLenString = findMaxLenString(strs, i + 1, str, maxLen);
+
+        return findMaxLenString(strs, i + 1, str + strs[i].trim(), maxLenString);
     }
 }
