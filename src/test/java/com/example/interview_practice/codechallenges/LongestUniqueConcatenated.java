@@ -1,10 +1,12 @@
 package com.example.interview_practice.codechallenges;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.util.StopWatch;
 
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -28,7 +30,8 @@ public class LongestUniqueConcatenated {
         String[] A5 = {"a", "b", "c"};
         String[] A6 = {};
         String[] A7 = {" "};
-
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
         assertEquals(5, solution(A1));
         assertEquals(6, solution(A2));
         assertEquals(0, solution(A3));
@@ -36,6 +39,8 @@ public class LongestUniqueConcatenated {
         assertEquals(3, solution(A5));
         assertEquals(0, solution(A6));
         assertEquals(1, solution(A7));
+        stopWatch.stop();
+        System.out.println("Solution one running-time: " + stopWatch.getTotalTime(TimeUnit.MILLISECONDS));
     }
 
 
@@ -47,15 +52,18 @@ public class LongestUniqueConcatenated {
         String[] A4 = {"eva", "jqw", "tyn", "jan"};
         String[] A5 = {"a", "b", "c"};
         String[] A6 = {};
-        String[] A7 = {""};
-
+        String[] A7 = {" "};
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
         assertEquals(5, solution2(A1));
         assertEquals(6, solution2(A2));
         assertEquals(0, solution2(A3));
         assertEquals(9, solution2(A4));
         assertEquals(3, solution2(A5));
         assertEquals(0, solution2(A6));
-        assertEquals(0, solution2(A7));
+        assertEquals(1, solution2(A7));
+        stopWatch.stop();
+        System.out.println("Solution two running-time: " + stopWatch.getTotalTime(TimeUnit.MILLISECONDS));
     }
 
     int solution(String[] A) {
@@ -86,7 +94,7 @@ public class LongestUniqueConcatenated {
         return allFoundStrs;
     }
 
-     boolean isUnique(String s) {
+    boolean isUnique(String s) {
         HashSet<Character> charSet = new HashSet<>();
         for (char c : s.toCharArray()) {
             if (charSet.contains(c)) {
@@ -113,6 +121,6 @@ public class LongestUniqueConcatenated {
 
         int maxLenString = findMaxLenString(strs, i + 1, str, maxLen);
 
-        return findMaxLenString(strs, i + 1, str + strs[i].trim(), maxLenString);
+        return findMaxLenString(strs, i + 1, str + strs[i], maxLenString);
     }
 }
