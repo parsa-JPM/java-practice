@@ -35,11 +35,9 @@ public class CorrectParanthesis {
         (()<)>
      */
     private boolean solution(String s) {
-        // todo check empty string 
-        // todo check string with only closed p
-        // if (s.trim().isEmpty()) {
-        //     return true;
-        // }
+        if (s.trim().isEmpty()) {
+            return true;
+        }
 
         char[] chars = s.toCharArray();
         var pMap = Map.of(')', '(', ']', '[', '}', '{', '>', '<');
