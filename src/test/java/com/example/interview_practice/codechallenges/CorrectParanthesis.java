@@ -1,12 +1,11 @@
 package com.example.interview_practice.codechallenges;
 
-import java.util.Map;
-import java.util.Stack;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.DisplayName;
+import java.util.Map;
+import java.util.Stack;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -70,7 +69,6 @@ public class CorrectParanthesis {
         "",
         " "
     })
-    @DisplayName("Parameterized Test for Invalid Strings")
     public void testWithCorrectStrings(String input) {
         var result = solution(input);
 
@@ -86,7 +84,6 @@ public class CorrectParanthesis {
         "(]",
         "(()<)>"
     })
-    @DisplayName("Parameterized Test for Invalid Strings")
     public void testWithIncorrectValues(String input) {
         var result = solution(input);
 
