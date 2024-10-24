@@ -30,9 +30,9 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <!--it indicates that the dependency is not needed for compilation but
-             is required for execution and testing.
-              Dependencies with the runtime scope are included in the runtime classpath but
-               not in the compile-time classpath.-->
+          is required for execution and testing.
+           Dependencies with the runtime scope are included in the runtime classpath but
+            not in the compile-time classpath.-->
             <scope>runtime</scope>
         </dependency>
         <dependency>
