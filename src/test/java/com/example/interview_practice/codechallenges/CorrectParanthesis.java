@@ -59,7 +59,7 @@ public class CorrectParanthesis {
         return stack.isEmpty();
     }
 
-    @ParameterizedTest(name = "{index} => Testing with input: ''{0}''")
+    @ParameterizedTest(name = "{index} => Testing with input: {0}")
     @ValueSource(strings = {
         "()()",
         "(())<>",
@@ -75,7 +75,7 @@ public class CorrectParanthesis {
         assertTrue(result);
     }
 
-    @ParameterizedTest(name = "{index} => Testing with input: ''{0}''")
+    @ParameterizedTest(name = "{index} => Testing with input: {0}")
     @ValueSource(strings = {
         "())()",
         "(()",
