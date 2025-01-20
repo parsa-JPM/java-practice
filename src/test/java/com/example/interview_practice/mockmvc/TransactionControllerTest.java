@@ -1,23 +1,20 @@
 package com.example.interview_practice.mockmvc;
 
-import com.example.interview_practice.MyUtils;
+import java.math.BigDecimal;
+
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.math.BigDecimal;
+import com.example.interview_practice.MyUtils;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-
-@ExtendWith(SpringExtension.class)
 @SpringBootTest
 // it tells spring to create mockMvc object for us
 @AutoConfigureMockMvc
@@ -43,4 +40,6 @@ class TransactionControllerTest {
                 // it prints all request and response details (body, headers, method, etc)
                 .andDo(print());
     }
+
+    // todo write failure scenarios
 }

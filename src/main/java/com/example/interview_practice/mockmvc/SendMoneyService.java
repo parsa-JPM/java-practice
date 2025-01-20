@@ -1,20 +1,22 @@
 package com.example.interview_practice.mockmvc;
 
 
+import org.springframework.stereotype.Service;
+
 import com.example.interview_practice.mockmvc.model.Transaction;
 import com.example.interview_practice.mockmvc.model.TrxRepo;
 import com.example.interview_practice.mockmvc.model.UserRepo;
 import com.example.interview_practice.mockmvc.model.dto.SendMoneyDTO;
+
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
 public class SendMoneyService {
 
-    private TrxRepo trxRepo;
+    private final TrxRepo trxRepo;
 
-    private UserRepo userRepo;
+    private final UserRepo userRepo;
 
     public SendMoneyDTO send(TrxReq trxReq) {
 
