@@ -14,7 +14,6 @@ public class MaxNumber {
         assertEquals(98, findMax(ints));
         assertEquals(98, findMaxWithStream(ints));
         assertEquals(98, findMaxWithPureStream(ints));
-
     }
 
     private int findMax(int[] ints) {
