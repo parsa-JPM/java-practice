@@ -36,9 +36,11 @@ class BonusEngineImplTest {
         res = bEngine.calculate(new Deposit(new BigDecimal("5")));
         Assertions.assertEquals(new Bonus(new BigDecimal("5")), res);
 
-        res = bEngine.calculate(new Deposit(new BigDecimal("12")));
-        Assertions.assertEquals(new Bonus(new BigDecimal("-1")), res);
-
+        for (int i = 0; i < 10000; i++) {
+            // todo mock the chance variable
+            res = bEngine.calculate(new Deposit(new BigDecimal("12")));
+            Assertions.assertEquals(new Bonus(new BigDecimal("0")), res);
+        }
     }
 
 
