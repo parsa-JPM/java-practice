@@ -32,17 +32,17 @@ public class JumpGame {
     @Test
     public void test_DP_jump() {
         int[] input = {2, 3, 1, 1, 4};
-        assertTrue(JumpWithDP.canJump(input));
+        assertTrue(DPJump.canJump(input));
 
         int[] input2 = {3, 2, 1, 0, 4};
-        assertFalse(JumpWithDP.canJump(input2));
+        assertFalse(DPJump.canJump(input2));
     }
 
     /*
       this is Solution with DP (dynamic programming) O(n^n) without caching but with caching it will be O(n)
       it's tested with Leetcode's test cases
     */
-    static class JumpWithDP {
+    static class DPJump {
 
         public static boolean canJump(int[] nums) {
             Map<Integer, Boolean> cache = new HashMap<>();
