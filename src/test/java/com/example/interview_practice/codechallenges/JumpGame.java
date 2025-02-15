@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class JumpGame {
 
     @Test
-    public void test() {
+    public void test_DP_jump() {
         int[] input = {2, 3, 1, 1, 4};
         assertTrue(JumpWithDP.canJump(input));
 
