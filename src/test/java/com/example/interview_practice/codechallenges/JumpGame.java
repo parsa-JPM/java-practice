@@ -33,9 +33,26 @@ public class JumpGame {
     public void test_DP_jump() {
         int[] input = {2, 3, 1, 1, 4};
         assertTrue(DPJump.canJump(input));
+        assertTrue(canJumpGreedy(input));
 
         int[] input2 = {3, 2, 1, 0, 4};
         assertFalse(DPJump.canJump(input2));
+        assertFalse(canJumpGreedy(input2));
+    }
+
+    /*
+      this is Greedy and also used pointer algo with O(n) time complexity and O(1) space complexity
+     */
+    private boolean canJumpGreedy(int[] nums) {
+        var goal = nums.length - 1;
+        for (int i = nums.length - 2; i >= 0; i--) {
+            var jumpNeeded = goal - i;
+            if (nums[i] >= jumpNeeded) {
+                goal = i;
+            }
+        }
+
+        return goal == 0;
     }
 
     /*
