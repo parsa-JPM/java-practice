@@ -35,17 +35,25 @@ public class JumpGameTwo {
         return findMinSteps(nums, 0, new HashMap<>());
     }
 
+
+    /*
+      it solves problem with dynamic programming and returns -1 if array cant reach end
+      which is unnecessary for the this problem but I did to learn more recursion
+     */
     private int findMinSteps(int[] nums, int index, Map<Integer, Integer> cache) {
+        // Base case condition
         if (index >= nums.length - 1) {
             // in the end of array our distance to end is 0
             return 0;
         }
 
+        // Base case condition
         if (cache.containsKey(index)) {
             return cache.get(index);
         }
 
         var jumps = nums[index];
+        // Base case condition
         if (jumps == 0) {
             System.out.println("steps: blocked");
             System.out.println("index: " + index);
@@ -55,12 +63,12 @@ public class JumpGameTwo {
 
         // it keeps shortest number of steps for each branch
         var branchMinSteps = Integer.MAX_VALUE;
-        var isAllWaysBlock = true;
+        var isAllWaysBlocked = true;
         for (int j = 1; j <= jumps; j++) {
             var steps = findMinSteps(nums, index + j, cache);
             // Here is where one line of branch execution has been completed
             if (steps != -1) {
-                isAllWaysBlock = false;
+                isAllWaysBlocked = false;
             }
 
             if (steps == -1) {
@@ -77,7 +85,7 @@ public class JumpGameTwo {
         System.out.println("index: " + index);
         System.out.println("+++++++++");
 
-        if (isAllWaysBlock) {
+        if (isAllWaysBlocked) {
             // sign that this branch is totally blocked
             branchMinSteps = -1;
         }
