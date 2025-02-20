@@ -1,12 +1,11 @@
 package com.example.interview_practice.codechallenges;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
   You are given a 0-indexed array of integers nums of length n. You are initially positioned at nums[0].
