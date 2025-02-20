@@ -29,6 +29,9 @@ public class JumpGameTwo {
 
         int[] input3 = {5,9,3,2,1,0,2,3,3,1,0,0};
         assertEquals(3, jump(input3));
+
+        int[] input4 = {0, 1};
+        assertEquals(-1, jump(input4));
     }
 
     public int jump(int[] nums) {
