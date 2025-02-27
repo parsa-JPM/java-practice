@@ -21,21 +21,51 @@ public class JumpGameTwo {
 
     @Test
     void test() {
-        int[] input1 = {2, 3, 1, 1, 4};
-        assertEquals(2, jump(input1));
+        int[] input1 = {2, 3, 1, 10, 1, 1, 4};
+//        assertEquals(3, jump(input1));
+        assertEquals(3, findMinStepsGreedy(input1));
 
         int[] input2 = {2, 3, 0, 1, 4};
         assertEquals(2, jump(input2));
+        assertEquals(2, findMinStepsGreedy(input2));
 
-        int[] input3 = {5,9,3,2,1,0,2,3,3,1,0,0};
+        int[] input3 = {5, 9, 3, 2, 1, 0, 2, 3, 3, 1, 0, 0};
         assertEquals(3, jump(input3));
+        assertEquals(3, findMinStepsGreedy(input3));
 
-        int[] input4 = {0, 1};
+        int[] input4 = {1, 1, 0, 1};
         assertEquals(-1, jump(input4));
+        assertEquals(-1, findMinStepsGreedy(input4));
     }
 
     public int jump(int[] nums) {
-        return findMinSteps(nums, 0, new HashMap<>());
+        return findMinStepsDynamic(nums, 0, new HashMap<>());
+    }
+
+
+    /*
+       it's like Brute force search algo which currently I don't know what's that
+     */
+    private int findMinStepsGreedy(int[] nums) {
+        int l = 0, r = 0;
+        var steps = 0;
+        while (r < nums.length - 1) {
+            var farthest = 0;
+
+            for (int i = l; i <= r; i++) {
+                farthest = Math.max(farthest, nums[i] + i);
+            }
+
+            if (farthest == 0) {
+                return -1;
+            }
+
+            l = r + 1;
+            r = farthest;
+            steps++;
+        }
+
+        return steps;
     }
 
 
@@ -43,7 +73,7 @@ public class JumpGameTwo {
       it solves problem with dynamic programming and returns -1 if array cant reach end
       which is unnecessary for the this problem but I did to learn more recursion
      */
-    private int findMinSteps(int[] nums, int index, Map<Integer, Integer> cache) {
+    private int findMinStepsDynamic(int[] nums, int index, Map<Integer, Integer> cache) {
         // Base case condition
         if (index >= nums.length - 1) {
             // in the end of array our distance to end is 0
@@ -68,7 +98,7 @@ public class JumpGameTwo {
         var branchMinSteps = Integer.MAX_VALUE;
         var isAllWaysBlocked = true;
         for (int j = 1; j <= jumps; j++) {
-            var steps = findMinSteps(nums, index + j, cache);
+            var steps = findMinStepsDynamic(nums, index + j, cache);
             // Here is where one line of branch execution has been completed
             if (steps != -1) {
                 isAllWaysBlocked = false;
