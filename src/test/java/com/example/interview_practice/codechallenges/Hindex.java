@@ -13,8 +13,8 @@ public class Hindex {
         int[] input = {3, 0, 6, 1, 5};
         assertEquals(3, hIndex(input));
 
-        int[] input2 = {1, 2, 3, 4, 5};
-        assertEquals(3, hIndexMap(input2));
+        int[] input2 = {0, 1, 2, 3, 4};
+        assertEquals(2, hIndexMap(input2));
 
     }
 
@@ -39,6 +39,7 @@ public class Hindex {
 
     private int hIndexMap(int[] citations) {
         int n = citations.length;
+        // cause we have n article (in our example 5 so h index can be 5 also)
         int[] buckets = new int[n + 1];
 
         for (int c : citations) {
