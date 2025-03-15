@@ -1,12 +1,10 @@
 package com.example.interview_practice.codechallenges;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
-import static java.lang.Math.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Hindex {
 
