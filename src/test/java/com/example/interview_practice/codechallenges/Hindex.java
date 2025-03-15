@@ -50,7 +50,7 @@ public class Hindex {
         /*
           bucket array would be like this:
           value: 1 1 1 1 1
-          index: 1 2 3 4 5
+          index: 0 1 2 3 4
          */
         for (int i = n; i >= 0; i--) {
             count += buckets[i];
