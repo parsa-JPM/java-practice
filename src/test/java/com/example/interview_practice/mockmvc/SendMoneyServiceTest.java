@@ -1,24 +1,22 @@
 package com.example.interview_practice.mockmvc;
 
 
-import java.math.BigDecimal;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import static org.mockito.Mockito.when;
-import org.mockito.junit.jupiter.MockitoExtension;
-
 import com.example.interview_practice.mockmvc.model.Transaction;
 import com.example.interview_practice.mockmvc.model.TrxRepo;
 import com.example.interview_practice.mockmvc.model.User;
 import com.example.interview_practice.mockmvc.model.UserRepo;
 import com.example.interview_practice.mockmvc.model.dto.SendMoneyDTO;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.math.BigDecimal;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class SendMoneyServiceTest {

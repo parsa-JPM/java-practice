@@ -2,6 +2,7 @@ package com.example.interview_practice;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
@@ -23,13 +24,9 @@ public class TestCode {
         );
 
         List<User> userCollect = users.stream()
-                .filter(u -> u.age > 10)
+                .sorted(Comparator.comparing(User::age).reversed())
                 .toList();
-        CopyOnWriteArrayList<User> asyncList = new CopyOnWriteArrayList<>(userCollect);
 
-        for (User user: asyncList){
-            System.out.println(user);
-        }
 
         System.out.println(userCollect);
     }

@@ -18,7 +18,7 @@ import com.example.interview_practice.MyUtils;
 @SpringBootTest
 // it tells spring to create mockMvc object for us
 @AutoConfigureMockMvc
-class TransactionControllerTest {
+class TransactionControllerIT {
 
     @Autowired
     MockMvc mockMvc;

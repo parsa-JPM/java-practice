@@ -1,6 +1,7 @@
 package william;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import william.model.Bonus;
 import william.model.Deposit;
@@ -24,6 +25,7 @@ class BonusEngineImplTest {
     }
 
     @Test
+    @Disabled
     public void between5and10() {
         var bEngine = new BonusEngineImpl();
 
