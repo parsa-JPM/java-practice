@@ -1,42 +1,43 @@
 package com.example.interview_practice.concurrency;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-
-import org.junit.jupiter.api.Test;
+import java.util.Set;
+import java.util.concurrent.*;
 
 public class ExecutersService {
 
     @Test
     void createFixedThreadPool() throws InterruptedException, ExecutionException {
-        ExecutorService executorService = Executors.newFixedThreadPool(5); // Pool of 5 threads
+//        ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
+        try (ExecutorService executorService = Executors.newFixedThreadPool(19)) {
 
-        // List to store Future objects
-        List<Future<String>> futures = new ArrayList<>();
+            List<Future<String>> futures = new ArrayList<>();
+            Set<Long> ids = ConcurrentHashMap.newKeySet();
+//            Set<Long> ids = new HashSet<>();
 
-        // Submit 20 tasks to the executor service
-        for (int i = 1; i <= 20; i++) {
-            int taskId = i; // Each thread gets a unique ID
-            
-            Callable<String> task = () -> {
-                return "Task " + taskId + " executed by " + Thread.currentThread().getName();
-            };
+            for (int i = 1; i <= 20; i++) {
+                int taskId = i;
+                Callable<String> task = () -> {
+                    Thread.sleep(1000);
+                    var tid = Thread.currentThread().threadId();
+                    if (ids.contains(tid)) {
+                        System.out.printf("run in second hand thread: %s \n", tid);
+                    } else {
+                        ids.add(tid);
+                    }
+                    return "Task " + taskId + " executed by " + tid;
+                };
 
-            futures.add(executorService.submit(task)); // Submit the task and store the Future
+                futures.add(executorService.submit(task));
+            }
+
+            for (Future<String> future : futures) {
+                System.out.println(future.get());
+            }
         }
-
-        // Retrieve and print results
-        for (Future<String> future : futures) {
-            System.out.println(future.get()); // Blocking call to get the result
-        }
-
-        // Shut down the executor service
-        executorService.shutdown();
     }
 
 }

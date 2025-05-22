@@ -6,6 +6,8 @@ import java.math.BigDecimal;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -35,8 +37,8 @@ class SendMoneyServiceTest {
         when(trxRepo.save(any())).thenReturn(mockTransaction());
         SendMoneyDTO sendMoneyDTO = sendMoneyService.send(new TrxReq("Parsa", "Mahsa", new BigDecimal("27")));
         
-        Assertions.assertEquals("Parsa", sendMoneyDTO.sender());
-        Assertions.assertEquals("Mahsa", sendMoneyDTO.rec());
+        assertEquals("Parsa", sendMoneyDTO.sender());
+        assertEquals("Mahsa", sendMoneyDTO.rec());
     }
 
     Transaction mockTransaction() {
