@@ -67,7 +67,8 @@ public class CorrectParanthesis {
         "((()a)())",
         "(y)",
         "",
-        " "
+        " ",
+        "<{[()]}>"
     })
     public void testWithCorrectStrings(String input) {
         var result = solution(input);
@@ -82,7 +83,8 @@ public class CorrectParanthesis {
         "))(( ",
         "(",
         "(]",
-        "(()<)>"
+        "(()<)>",
+        "{(})"
     })
     public void testWithIncorrectValues(String input) {
         var result = solution(input);

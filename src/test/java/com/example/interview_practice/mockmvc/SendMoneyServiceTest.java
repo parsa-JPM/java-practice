@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -37,6 +38,13 @@ class SendMoneyServiceTest {
         
         assertEquals("Parsa", sendMoneyDTO.sender());
         assertEquals("Mahsa", sendMoneyDTO.rec());
+    }
+
+    @Test
+    void sendFailure(){
+        when(userRepo.findAll()).thenThrow(RuntimeException.class);
+
+        assertThrows(RuntimeException.class, ()-> userRepo.findAll());
     }
 
     Transaction mockTransaction() {
