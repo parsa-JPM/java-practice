@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 
 import org.junit.jupiter.params.ParameterizedTest;
@@ -34,25 +35,26 @@ public class CorrectParanthesis {
         (()<)>
      */
     private boolean solution(String s) {
-        if (s.trim().isEmpty()) {
-            return true;
-        }
-
-        char[] chars = s.toCharArray();
-        var pMap = Map.of(')', '(', ']', '[', '}', '{', '>', '<');
         var stack = new Stack<Character>();
-        for (Character ch : chars) {
-            if (pMap.containsKey(ch)) {
+        var chars = s.trim().toCharArray();
+        var allowedChars = Map.of('(', ')', '{', '}', '<', '>', '[', ']');
+
+        for (char c : chars) {
+            if (Character.isAlphabetic(c)){
+                continue;
+            }
+
+            if (allowedChars.containsKey(c)) {
+                stack.push(c);
+            } else {
                 if (stack.isEmpty()) {
                     return false;
                 }
 
-                if (!stack.isEmpty() && pMap.get(ch) == stack.peek()) {
-                    stack.pop();
+                var closeChar = allowedChars.get(stack.pop());
+                if (closeChar != c) {
+                    return false;
                 }
-
-            } else if (!Character.isLetter(ch)) {
-                stack.push(ch);
             }
         }
 
@@ -61,14 +63,14 @@ public class CorrectParanthesis {
 
     @ParameterizedTest(name = "{index} => Testing with input: {0}")
     @ValueSource(strings = {
-        "()()",
-        "(())<>",
-        "({[]})",
-        "((()a)())",
-        "(y)",
-        "",
-        " ",
-        "<{[()]}>"
+            "()()",
+            "(())<>",
+            "({[]})",
+            "((()a)())",
+            "(y)",
+            "",
+            " ",
+            "<{[()]}>"
     })
     public void testWithCorrectStrings(String input) {
         var result = solution(input);
@@ -78,13 +80,13 @@ public class CorrectParanthesis {
 
     @ParameterizedTest(name = "{index} => Testing with input: {0}")
     @ValueSource(strings = {
-        "())()",
-        "(()",
-        "))(( ",
-        "(",
-        "(]",
-        "(()<)>",
-        "{(})"
+            "())()",
+            "(()",
+            "))(( ",
+            "(",
+            "(]",
+            "(()<)>",
+            "{(})"
     })
     public void testWithIncorrectValues(String input) {
         var result = solution(input);
