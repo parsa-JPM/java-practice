@@ -34,11 +34,13 @@ public class JumpGame {
         int[] input = {2, 3, 1, 1, 4};
         assertTrue(DPJump.canJump(input));
         assertTrue(canJumpGreedy(input));
+        assertTrue(canJumpGreedy2(input));
         assertTrue(jumpRecur(input, 0));
 
         int[] input2 = {3, 2, 1, 0, 4};
         assertFalse(DPJump.canJump(input2));
         assertFalse(canJumpGreedy(input2));
+        assertFalse(canJumpGreedy2(input2));
         assertFalse(jumpRecur(input2, 0));
     }
 
@@ -56,6 +58,18 @@ public class JumpGame {
 
         return goal == 0;
     }
+
+    private boolean canJumpGreedy2(int[] nums) {
+        var goal = nums.length - 1;
+        for (int r = nums.length - 2; r >= 0; r--) {
+           if(nums[r] + r >= goal){
+               goal = r;
+           }
+        }
+
+        return goal == 0;
+    }
+
 
     private boolean jumpRecur(int[] nums, int index) {
         if (index == nums.length - 1) {
