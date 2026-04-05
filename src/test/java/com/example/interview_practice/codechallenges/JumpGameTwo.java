@@ -21,8 +21,8 @@ public class JumpGameTwo {
 
     @Test
     void test() {
-        int[] input1 = {2, 3, 1, 10, 1, 1, 4};
-//        assertEquals(3, jump(input1));
+        int[] input1 = {2, 1, 1, 4, 1, 1, 4};
+        assertEquals(3, jump(input1));
         assertEquals(3, findMinStepsGreedy(input1));
 
         int[] input2 = {2, 3, 0, 1, 4};
@@ -36,6 +36,10 @@ public class JumpGameTwo {
         int[] input4 = {1, 1, 0, 1};
         assertEquals(-1, jump(input4));
         assertEquals(-1, findMinStepsGreedy(input4));
+
+        int[] input5 = {7, 0, 9, 6, 9, 6, 1, 7, 9, 0, 1, 2, 9, 0, 3};
+        assertEquals(2, jump(input5));
+        assertEquals(2, findMinStepsGreedy(input5));
     }
 
     public int jump(int[] nums) {
@@ -44,24 +48,28 @@ public class JumpGameTwo {
 
 
     /*
-       it's like Brute force search algo which currently I don't know what's that
+       BFS (Breadth-First Search) is a graph/tree traversal algorithm that explores nodes level by level — it visits all neighbors of the current node before going deeper.
+       Think of it like ripples in water: you explore everything at distance 1 first, then distance 2, then distance 3, etc.
      */
     private int findMinStepsGreedy(int[] nums) {
-        int l = 0, r = 0;
-        var steps = 0;
-        while (r < nums.length - 1) {
-            var farthest = 0;
+        int l = 0;
+        int r = 0;
+        int goal = nums.length - 1;
+        int steps = 0;
 
+        while (r < goal) {
+            // this loop check furthestIndex index we can go in specified window
+            int furthestIndex = 0;
             for (int i = l; i <= r; i++) {
-                farthest = Math.max(farthest, nums[i] + i);
+                // if value is 0 furthestIndex will be same index so in next turn l > r so loop will be ignored.
+                furthestIndex = Math.max(furthestIndex, nums[i] + i);
             }
 
-            if (farthest == 0) {
+            if (furthestIndex == 0)
                 return -1;
-            }
 
             l = r + 1;
-            r = farthest;
+            r = furthestIndex;
             steps++;
         }
 
