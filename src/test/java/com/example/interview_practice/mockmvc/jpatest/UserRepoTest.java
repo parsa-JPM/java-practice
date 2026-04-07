@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -82,8 +82,8 @@ class UserRepoTest {
 
     @Test
     public void addUserTest() {
-        assertEquals(userRepo.findAll().size(), 2);
-        assertEquals(trxRepo.findAll().size(), 10);
+        assertEquals(2, userRepo.findAll().size());
+        assertEquals(10, trxRepo.findAll().size());
     }
 
     @Test
@@ -91,7 +91,7 @@ class UserRepoTest {
     public void checkUserTransactions() {
         User parsa = userRepo.findByName("parsa");
         log.info("query for checking how Hibernate retrieve transactions ");
-        assertEquals(parsa.getSendTransactions().size(), 10);
+        assertEquals(10, parsa.getSendTransactions().size());
     }
 
 }
