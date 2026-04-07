@@ -43,9 +43,7 @@ public class MaxNumber {
     //     9 is greater → Keep 9
     private int findMaxWithPureStream(int[] ints) {
         return Arrays.stream(ints)
-                .reduce((a, b) -> {
-                    return a > b ? a : b;
-                })
+                .reduce(Math::max)
                 .orElse(0);
     }
 }
