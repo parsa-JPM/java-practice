@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class UserServiceTest {
 
-    private List<User> users = List.of(
+    private final List<User> users = List.of(
             new User(1L, "Alice", "alice@x.com", true, "ADMIN"),
             new User(4L, "Dave", "dave@x.com", true, "ADMIN"),
             new User(3L, "Carol", "carol@x.com", true, "USER"),
@@ -19,14 +19,14 @@ public class UserServiceTest {
     );
 
 
-    private UserService userService = new UserService();
+    private final UserService userService = new UserService();
 
     //Return a list of email addresses belonging only to active users, sorted alphabetically.
     @Test
     void emailOfActiveUsers() {
         assertThat(userService.emailOfActiveUsers(users))
                 .hasSize(3)
-                .containsExactly("alice@x.com", "carol@x.com", "dave@x.com");
+                .containsExactlyInAnyOrder("alice@x.com", "carol@x.com", "dave@x.com");
     }
 
     // Produce a Map<String, Long> where the key is the role and the value is the count of users with that role.

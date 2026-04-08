@@ -19,7 +19,7 @@ public class OrderServiceTest {
                     new OrderItem("Laptop", 1, 999.99)
             )),
             new Order(3L, "Alice", List.of(
-                    new OrderItem("Keyboa rd", 1, 79.99)
+                    new OrderItem("Keyboard", 1, 79.99)
             ))
     );
 
