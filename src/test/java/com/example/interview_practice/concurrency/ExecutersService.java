@@ -11,12 +11,11 @@ public class ExecutersService {
 
     @Test
     void createFixedThreadPool() throws InterruptedException, ExecutionException {
-//        ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
-        try (ExecutorService executorService = Executors.newFixedThreadPool(19)) {
+        ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
+//        try (ExecutorService executorService = Executors.newFixedThreadPool(19)) {
 
             List<Future<String>> futures = new ArrayList<>();
             Set<Long> ids = ConcurrentHashMap.newKeySet();
-//            Set<Long> ids = new HashSet<>();
 
             for (int i = 1; i <= 20; i++) {
                 int taskId = i;
@@ -38,6 +37,6 @@ public class ExecutersService {
                 System.out.println(future.get());
             }
         }
-    }
+//    }
 
 }

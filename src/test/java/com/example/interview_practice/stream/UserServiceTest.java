@@ -2,11 +2,11 @@ package com.example.interview_practice.stream;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class UserServiceTest {
 
@@ -42,9 +42,7 @@ public class UserServiceTest {
     @Test
     void test(){
         var result = users.stream()
-                .sorted(Comparator.comparing(User::name))
-                .map(User::name)
-                .toList();
+                .collect(Collectors.groupingBy(User::role, Collectors.counting()));
 
         System.out.println(result);
     }
