@@ -34,17 +34,17 @@ public class BestTimeBuySellStock {
      */
     static Stream<Arguments> maxProfitCases() {
         return Stream.of(
-                Arguments.of("leetcode example 1 - buy low sell high",       new int[]{7, 1, 5, 3, 6, 4}, 5),
-                Arguments.of("leetcode example 2 - descending prices",       new int[]{7, 6, 4, 3, 1},    0),
-                Arguments.of("single element - no sell day available",       new int[]{5},                0),
-                Arguments.of("two elements - profit possible",               new int[]{1, 5},             4),
-                Arguments.of("two elements - no profit",                     new int[]{5, 1},             0),
-                Arguments.of("all same prices - zero spread",                new int[]{3, 3, 3, 3},       0),
-                Arguments.of("all zeros - zero spread",                      new int[]{0, 0, 0, 0},       0),
-                Arguments.of("strictly ascending - sell at last day",        new int[]{1, 2, 3, 4, 5},    4),
-                Arguments.of("valley then peak at the very end",             new int[]{5, 3, 8, 2, 0, 9}, 9),
-                Arguments.of("multiple valleys - pick global max",           new int[]{3, 1, 5, 2, 8, 4}, 7),
-                Arguments.of("peak in the middle - ignore later dip",        new int[]{5, 2, 10, 7, 1},   8)
+                Arguments.of("leetcode example 1 - buy low sell high", new int[]{7, 1, 5, 3, 6, 4}, 5),
+                Arguments.of("leetcode example 2 - descending prices", new int[]{7, 6, 4, 3, 1}, 0),
+                Arguments.of("single element - no sell day available", new int[]{5}, 0),
+                Arguments.of("two elements - profit possible", new int[]{1, 5}, 4),
+                Arguments.of("two elements - no profit", new int[]{5, 1}, 0),
+                Arguments.of("all same prices - zero spread", new int[]{3, 3, 3, 3}, 0),
+                Arguments.of("all zeros - zero spread", new int[]{0, 0, 0, 0}, 0),
+                Arguments.of("strictly ascending - sell at last day", new int[]{1, 2, 3, 4, 5}, 4),
+                Arguments.of("valley then peak at the very end", new int[]{5, 3, 8, 2, 0, 9}, 9),
+                Arguments.of("multiple valleys - pick global max", new int[]{3, 1, 5, 2, 8, 4}, 7),
+                Arguments.of("peak in the middle - ignore later dip", new int[]{5, 2, 10, 7, 1}, 8)
         );
     }
 
@@ -55,19 +55,21 @@ public class BestTimeBuySellStock {
     }
 
     private int maxProfit(int[] prices) {
-        var maxProfit = 0;
-        int l = 0;
-        int r = 1;
+        var max = 0;
+        var l = 0;
+        var r = 1;
         while (r < prices.length) {
-            maxProfit = Math.max(maxProfit, prices[r] - prices[l]);
+            max = Math.max(max, prices[r] - prices[l]);
+
             if (prices[l] > prices[r]) {
                 l = r;
                 r++;
             } else {
                 r++;
             }
+
         }
 
-        return maxProfit;
+        return max;
     }
 }

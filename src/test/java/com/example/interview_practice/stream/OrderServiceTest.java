@@ -26,8 +26,6 @@ public class OrderServiceTest {
     // Get a deduplicated list of all product names ordered across all orders, sorted A→Z.
     @Test
     void sortedProductNamesTest() {
-
-
         Assertions.assertThat(orderService.sortedProductNames(orders))
                 .hasSize(4)
                 .containsExactly("Keyboard", "Laptop", "Monitor", "Mouse");
