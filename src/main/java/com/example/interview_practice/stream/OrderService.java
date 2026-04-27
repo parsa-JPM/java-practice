@@ -13,6 +13,10 @@ public class OrderService {
                 .map(OrderItem::productName)
                 .distinct()
                 .sorted()
+                /*
+                  Returns an unmodifiable list (List.of(...) semantics) and throws NullPointerException if the stream contains nulls
+                  but Collectors.toList() Returns a modifiable ArrayList and allows null
+                 */
                 .toList();
     }
 
