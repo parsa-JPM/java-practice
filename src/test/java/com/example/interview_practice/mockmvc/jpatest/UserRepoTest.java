@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -47,13 +48,13 @@ class UserRepoTest {
         var user1 = User.builder()
                 .name("parsa")
                 .balance(new BigDecimal("1000"))
-                .sendTransactions(new HashSet<>())
+                .sendTransactions(new ArrayList<>())
                 .recTransactions(new HashSet<>())
                 .build();
         var user2 = User.builder()
                 .name("mahsa")
                 .balance(new BigDecimal("1000"))
-                .sendTransactions(new HashSet<>())
+                .sendTransactions(new ArrayList<>())
                 .recTransactions(new HashSet<>())
                 .build();
 
