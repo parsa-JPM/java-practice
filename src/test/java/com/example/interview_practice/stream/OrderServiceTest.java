@@ -39,17 +39,27 @@ public class OrderServiceTest {
     }
 
     @Test
-    void sortOrderWithNumberOfItemTest(){
+    void sortOrderWithNumberOfItemTest() {
         System.out.println(orderService.sortOrderWithNumberOfItem(orders).stream().map(Order::customer).toList());
     }
 
     @Test
-    void test() {
-        var r = orders.stream()
-                .filter(order -> order.items().size() > 1)
-                .toList();
+    void totalPrice() {
+        System.out.println(orderService.totalPrice(orders));
+    }
 
-        Assertions.assertThat(r).hasSize(2);
+    @Test
+    void totalItemPrice() {
+        System.out.println(orderService.totalItemPrice(orders));
+    }
+
+    @Test
+    void test() {
+        int r = orders.stream()
+                .flatMap(order -> order.items().stream())
+                .mapToInt(OrderItem::quantity)
+                .reduce(1, Integer::sum);
+
         System.out.println(r);
     }
 }

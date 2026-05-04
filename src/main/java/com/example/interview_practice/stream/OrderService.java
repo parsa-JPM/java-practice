@@ -1,11 +1,33 @@
 package com.example.interview_practice.stream;
 
+import java.math.BigDecimal;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class OrderService {
+
+
+    public double totalPrice(List<Order> orders) {
+        return orders.stream()
+                .flatMap(order -> order.items().stream())
+                .mapToDouble(OrderItem::unitPrice)
+                .sum();
+    }
+
+    public Map<Long, BigDecimal> totalItemPrice(List<Order> orders) {
+        return orders.stream()
+                .collect(Collectors.toMap(
+                        Order::id,
+                        order ->
+                                order.items().stream()
+                                        .map(item -> BigDecimal.valueOf(item.unitPrice()))
+                                        // equivalent code  (big1, big2) -> big1.add(big2)
+                                        .reduce(BigDecimal.ZERO, BigDecimal::add)
+                ));
+    }
 
     public List<String> sortedProductNames(List<Order> orders) {
         return orders.stream()
