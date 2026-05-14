@@ -12,15 +12,15 @@ public class Bakery {
     private static final int MAX_SIZE = 5;
 
     private final ReentrantLock lock = new ReentrantLock();
-    private final Condition notFull  = lock.newCondition();
-    private final Condition notEmpty = lock.newCondition();
+    private final Condition makeBread = lock.newCondition();
+    private final Condition consumeBread = lock.newCondition();
 
     public void addBread() throws InterruptedException {
         lock.lock();
         try {
-            while (shelf.size() == MAX_SIZE) notFull.await();
+            while (shelf.size() == MAX_SIZE) makeBread.await();
             shelf.add("Bread");
-            notEmpty.signal();
+            consumeBread.signal();
         } finally {
             lock.unlock();
         }
@@ -30,9 +30,9 @@ public class Bakery {
         lock.lock();
         try {
             // when await calls thread will be paused until in another thread someone on same condition call signal()
-            while (shelf.isEmpty()) notEmpty.await();
+            while (shelf.isEmpty()) consumeBread.await();
             shelf.poll();
-            notFull.signal();
+            makeBread.signal();
         } finally {
             lock.unlock();
         }
