@@ -8,12 +8,10 @@ import java.util.stream.Collectors;
 public class UserService {
 
     public List<String> emailOfActiveUsers(List<User> users) {
-        List<String> emails = users.stream()
+        return users.stream()
                 .filter(User::active)
                 .map(User::email)
                 .toList();
-
-        return emails;
     }
 
 

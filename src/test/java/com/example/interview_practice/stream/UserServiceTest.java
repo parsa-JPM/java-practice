@@ -42,7 +42,7 @@ public class UserServiceTest {
     @Test
     void test(){
         var result = users.stream()
-                .collect(Collectors.groupingBy(User::role, Collectors.counting()));
+                .collect(Collectors.groupingBy(User::role, Collectors.toList()));
 
         System.out.println(result);
     }
