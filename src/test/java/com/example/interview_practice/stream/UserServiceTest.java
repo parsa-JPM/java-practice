@@ -39,13 +39,16 @@ public class UserServiceTest {
     }
 
     @Test
-    void userRoleMapping(){
-       var map = userService.userRoleMapping(users);
-        System.out.println(map.get("ADMIN"));
+    void userRoleMapping() {
+        var map = userService.userRoleMapping(users);
+
+        for (Map.Entry entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " group has " + map.get(entry.getKey()).size() + " users");
+        }
     }
 
     @Test
-    void test(){
+    void test() {
     }
 
 }
