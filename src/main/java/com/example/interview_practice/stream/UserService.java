@@ -15,6 +15,12 @@ public class UserService {
     }
 
 
+    public Map<String, List<User>> userRoleMapping(List<User> users){
+        return  users.stream()
+                .collect(Collectors.groupingBy(User::role, Collectors.toList()));
+    }
+
+
     public Map<String, Long> roleUsersMap(List<User> users) {
         Map<String, Long> activeCountByRole = users.stream()
                 .collect(Collectors.groupingBy(User::role, Collectors.counting()));

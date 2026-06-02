@@ -38,13 +38,14 @@ public class UserServiceTest {
                 .containsExactlyInAnyOrderEntriesOf(Map.of("USER", 3L, "ADMIN", 2L));
     }
 
+    @Test
+    void userRoleMapping(){
+       var map = userService.userRoleMapping(users);
+        System.out.println(map.get("ADMIN"));
+    }
 
     @Test
     void test(){
-        var result = users.stream()
-                .collect(Collectors.groupingBy(User::role, Collectors.toList()));
-
-        System.out.println(result);
     }
 
 }
