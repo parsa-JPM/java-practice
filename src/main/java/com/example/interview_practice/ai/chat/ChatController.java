@@ -1,4 +1,4 @@
-package com.example.interview_practice.ai;
+package com.example.interview_practice.ai.chat;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatResponse;
@@ -17,6 +17,7 @@ public class ChatController {
         this.chatClient = builder.build();
     }
 
+    // to test endpoint: http :8080/ai/joke
     @GetMapping("/joke")
     public String getJoke() {
         return chatClient.prompt()
@@ -26,6 +27,7 @@ public class ChatController {
                 .content();
     }
 
+    // to test endpoint: http --stream :8080/ai/stream
     @GetMapping("/stream")
     public Flux<String> stream(){
         return chatClient.prompt()
