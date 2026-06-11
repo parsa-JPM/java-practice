@@ -1,0 +1,47 @@
+{
+  "candidate_name": "Parsa Mihandoost",
+  "experiences": [
+    {
+      "job_title": "Software Engineer",
+      "company_name": "Backbase",
+      "job_description": "Backend Developer working across Payments (Scheduler) and Forex teams. Developed scalable backend services using Java and Spring Boot for payment scheduling and currency exchange systems. Designed RESTful APIs and SQL data models, and implemented asynchronous processing with Azure messaging to support high-volume financial operations. Led the backend design of a bulk payment approval system, enabling asynchronous approval/rejection of up to 100 payments with aggregated results.",
+      "date": "Jul 2025 - Present",
+      "skills": ["Java 21", "Spring Boot", "PostgreSQL", "Docker", "Kubernetes", "Azure", "REST API", "Asynchronous Processing"]
+    },
+    {
+      "job_title": "Software Engineer",
+      "company_name": "GFT",
+      "job_description": "Worked on a system with hundreds of microservices. Designed and developed new features, optimized system performance, and architected solutions. Implemented asynchronous communication system to reduce reliance on traditional API calls. Contributed to comprehensive testing including integration, unit, BDD, and load testing. Collaborated with frontend teams on Angular-based projects.",
+      "date": "April 2022 - Jul 2025",
+      "skills": ["Java 8", "Java 21", "Spring Boot", "Quarkus", "Docker", "Kubernetes", "GCP", "MongoDB", "SQL", "Angular", "BDD", "Unit Testing", "Load Testing"]
+    },
+    {
+      "job_title": "Software Engineer",
+      "company_name": "Jiring",
+      "job_description": "Contributed to Project 7#, a high-demand system handling over 200 requests per minute. Developed a dynamic, zero-downtime solution using Spring Boot to manage critical business operations. Played a key role in designing the backend architecture and introduced an automation testing culture within the team.",
+      "date": "Aug 2020 - Jul 2021",
+      "skills": ["Java 8", "Spring Boot", "Spring Cloud", "Oracle", "Automation Testing"]
+    },
+    {
+      "job_title": "Java Developer",
+      "company_name": "Dadeh Pardaz",
+      "job_description": "Contributed to a new portal for Mobile Communications Company of Iran (mci.ir). Designed and implemented a secure hiring system resilient to high volumes of malicious traffic. Developed reusable JSP components (Tag Libraries) within the Liferay framework including CAPTCHA, input fields, and form structures.",
+      "date": "Jun 2019 - Jun 2020",
+      "skills": ["Java 8", "Spring Boot", "MySQL", "Liferay", "JSP", "Tag Libraries"]
+    },
+    {
+      "job_title": "Java Developer",
+      "company_name": "Yasna Team",
+      "job_description": "Developed web applications using Spring Boot. Implemented new features and tools for a CMS including RSS feed and sitemap generators. Contributed to the design and implementation of various authentication mechanisms across three projects.",
+      "date": "April 2017 - Dec 2018",
+      "skills": ["Java", "Spring Boot", "MySQL", "REST API", "Authentication"]
+    },
+    {
+      "job_title": "Java Developer",
+      "company_name": "Farzan Institute",
+      "job_description": "First professional backend development role. Designed and developed a private patient management portal using Laravel, handling both backend implementation and frontend development with jQuery. Worked within a small team alongside senior developers.",
+      "date": "Jan 2016 - Mar 2017",
+      "skills": ["PHP", "Laravel", "MySQL", "jQuery", "Frontend Development"]
+    }
+  ]
+}
