@@ -18,8 +18,8 @@ public class MemoryController {
                 .build();
     }
 
-    //  http :8080/ai/chat msg=="Hey, I'm Parsa" id=="1"
-    //  http :8080/ai/chat msg=="what's my name?" id=="1"
+    //  http :8080/ai/memory msg=="Hey, I'm Parsa" id=="1"
+    //  http :8080/ai/memory msg=="what's my name?" id=="1"
     @GetMapping("/ai/memory")
     public String chat(@RequestParam("msg") String msg,
                        @RequestParam("id") String conversationId) {
