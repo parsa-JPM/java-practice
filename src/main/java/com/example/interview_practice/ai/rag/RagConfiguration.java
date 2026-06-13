@@ -34,7 +34,7 @@ public class RagConfiguration {
     private Resource models;
 
     @Bean
-    SimpleVectorStore simpleVectorStore(
+    public SimpleVectorStore simpleVectorStore(
             // it says how to convert text to vector
             EmbeddingModel embeddingModel) throws IOException {
         var simpleVectorStore = SimpleVectorStore.builder(embeddingModel).build();
@@ -70,6 +70,7 @@ public class RagConfiguration {
             simpleVectorStore.save(vectorStoreFile);
             log.info("Vector file has been created");
         }
+
         return simpleVectorStore;
     }
 
