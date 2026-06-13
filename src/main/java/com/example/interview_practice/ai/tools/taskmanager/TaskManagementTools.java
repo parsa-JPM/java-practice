@@ -1,4 +1,4 @@
-package com.example.interview_practice.tools.taskmanager;
+package com.example.interview_practice.ai.tools.taskmanager;
 
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.stereotype.Component;

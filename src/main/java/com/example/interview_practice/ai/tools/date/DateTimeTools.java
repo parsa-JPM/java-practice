@@ -1,4 +1,4 @@
-package com.example.interview_practice.tools.date;
+package com.example.interview_practice.ai.tools.date;
 
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.context.i18n.LocaleContextHolder;

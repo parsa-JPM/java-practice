@@ -1,7 +1,7 @@
-package com.example.interview_practice.tools;
+package com.example.interview_practice.ai.tools;
 
-import com.example.interview_practice.tools.date.DateTimeTools;
-import com.example.interview_practice.tools.taskmanager.TaskManagementTools;
+import com.example.interview_practice.ai.tools.date.DateTimeTools;
+import com.example.interview_practice.ai.tools.taskmanager.TaskManagementTools;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
