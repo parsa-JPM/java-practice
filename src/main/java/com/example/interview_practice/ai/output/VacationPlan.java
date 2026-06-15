@@ -1,6 +1,8 @@
 package com.example.interview_practice.ai.output;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.ChatClientAttributes;
+import org.springframework.ai.chat.client.advisor.StructuredOutputValidationAdvisor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +28,17 @@ public class VacationPlan {
     // http :8080/vacation/structured destination=="shiraz"
     @GetMapping("/vacation/structured")
     public Itinerary vacationStructured(@RequestParam(value = "destination", defaultValue = "Tehran") String destination) {
+
+        var validationAdvisor = StructuredOutputValidationAdvisor.builder()
+                .outputType(Itinerary.class)
+                .maxRepeatAttempts(3)
+                .build();
+
         return chatClient.prompt()
+                .advisors(a-> a.advisors(validationAdvisor)
+                        // Some LLM has native structured output feature we can use it
+                        .param(ChatClientAttributes.STRUCTURED_OUTPUT_NATIVE.getKey(), true)
+                )
                 .user(u -> {
                     u.text("What's a good vacation plan while I'm in {destination} for 3 days?");
                     u.param("destination", destination);

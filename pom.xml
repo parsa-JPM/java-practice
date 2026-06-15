@@ -15,7 +15,7 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>25</java.version>
-        <spring-ai.version>2.0.0-RC1</spring-ai.version>
+        <spring-ai.version>2.0.0</spring-ai.version>
     </properties>
     <dependencyManagement>
 <!--    Spring AI is a separate project with its own release cycle. It's not bundled into Spring Boot's BOM,-->
@@ -30,18 +30,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-<!--    Because spring-ai-bom 2.0.0-RC1 is not on Maven Central yet.-->
-<!--    Maven Central is the default repository Maven checks for everything. It only contains stable/GA releases.-->
-<!--    RC (Release Candidate) and milestone builds live on Spring's own repository server instead.-->
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots><enabled>false</enabled></snapshots>
-        </repository>
-    </repositories>
 
     <dependencies>
         <dependency>
