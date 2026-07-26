@@ -3,7 +3,9 @@ package com.example.interview_practice;
 import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TestCode {
 
@@ -29,8 +31,14 @@ public class TestCode {
 
     @Test
     void howReduceMethodWorks() {
-        int poolSize = Runtime.getRuntime().availableProcessors();
+        var t = Map.of("test", "test", "test2", "test");
+        Map<String,String> map = new HashMap<>();
+        map.put("test", "test1");
+        map.put(null, "test2");
 
-        System.out.println(poolSize);
+        for (Map.Entry<String,String> entry: map.entrySet()){
+            System.out.println(entry.getKey());
+        }
+        System.out.println(map);
     }
 }
