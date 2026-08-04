@@ -1,5 +1,6 @@
 package com.example.interview_practice.stream;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +25,6 @@ public class UserService {
     public Map<String, Long> roleUsersMap(List<User> users) {
         Map<String, Long> activeCountByRole = users.stream()
                 .collect(Collectors.groupingBy(User::role, Collectors.counting()));
-
 
         return activeCountByRole.entrySet().stream()
                 .sorted(Map.Entry.<String, Long>comparingByValue().reversed())

@@ -84,7 +84,7 @@ public class OrderService {
 
                     .sorted(Comparator.comparingInt((Order o) -> o.items().size()).reversed())
                  */
-                .sorted(Comparator.<Order>comparingInt(o -> o.items().size()).reversed())
+                .sorted(Comparator.comparingInt((Order o) -> o.items().size()).reversed())
                 .toList();
     }
 }

@@ -2,6 +2,7 @@ package com.example.interview_practice;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.Instant;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -39,6 +40,13 @@ public class TestCode {
         for (Map.Entry<String,String> entry: map.entrySet()){
             System.out.println(entry.getKey());
         }
+
         System.out.println(map);
+    }
+
+    @Test
+    void workingWithInstant(){
+        Instant instant = Instant.parse("2026-08-04T09:00:00Z");
+        System.out.println(instant.isBefore(Instant.now()));
     }
 }
